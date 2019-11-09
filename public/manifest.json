@@ -9,5 +9,13 @@
   },
   "content_security_policy": "script-src 'self' 'sha256-7W2bHf0BtlIOl4aGtV7vMqudxWihoAgvnpPOiT7vSnY='; object-src 'self'",
   "permissions": [
+    "activeTab",
+    "<all_urls>"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["contentScript.js"]
+    }
   ]
 }
