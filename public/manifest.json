@@ -1,20 +1,24 @@
 {
   "manifest_version": 2,
-  "name": "My Extension",
+  "name": "Test Extension",
   "description": "This extension is a starting point to create a real Chrome extension",
   "version": "0.0.1",
   "browser_action": {
     "default_popup": "index.html",
-    "default_title": "Open the popup"
+    "default_title": "Test Extension"
+  },
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": true
   },
   "content_security_policy": "script-src 'self' 'sha256-7W2bHf0BtlIOl4aGtV7vMqudxWihoAgvnpPOiT7vSnY='; object-src 'self'",
   "permissions": [
     "activeTab",
-    "<all_urls>"
+    "contextMenus"
   ],
   "content_scripts": [
     {
-      "matches": ["http://*/*", "https://*/*"],
+      "matches": [ "<all_urls>"],
       "js": ["contentScript.js"]
     }
   ]
