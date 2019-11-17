@@ -12,7 +12,7 @@ function getDataFromDOM(selector) {
 }
 
 function ping() {
-    chrome.runtime.sendMessage('ping', response => {
+    chrome.runtime.sendMessage(getDataFromDOM('body'), response => {
         if (chrome.runtime.lastError) {
             setTimeout(ping, 1000);
         } else {
