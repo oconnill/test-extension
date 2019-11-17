@@ -1,17 +1,17 @@
+console.log('background script hit');
 
-// chrome.runtime.onInstalled.addListener(function(details){
-    // This gets once the extension is installed on browser
-//     console.log('extension installed')
-// });
+chrome.runtime.onConnect.addListener(port => {
+    port.onMessage.addListener(msg => {
+            console.log('background recieved msg', msg);
+            chrome.tabs.sendMessage(activeTab.id,
+                {"message": msg}
+            );
+        }
+    );
+});
 
-// chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
-    // Get called when page URL is updated or refreshed
-//     console.log('updated here')
-// });
+chrome.runtime.onMessage.addListener((msg) => {
+    console.log('got here maybes', msg);
+    // sendResponse('pong')
+});
 
-//
-// chrome.contextMenus.create({
-//     id: 'RecordEtsyEmails',
-//     title: 'Get Emails Off Page',
-//     contexts: ['all']
-// });

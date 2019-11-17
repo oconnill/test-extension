@@ -13,8 +13,10 @@
   },
   "content_security_policy": "script-src 'self' 'sha256-7W2bHf0BtlIOl4aGtV7vMqudxWihoAgvnpPOiT7vSnY='; object-src 'self'",
   "permissions": [
-    "activeTab",
-    "contextMenus"
+    "tabs",
+    "background",
+    "http://*/*",
+    "https://*/*"
   ],
   "content_scripts": [
     {

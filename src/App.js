@@ -1,21 +1,40 @@
 /* global chrome */
 
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Scrape from "./Scrape";
+import React from 'react'
 
+class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            configData: null,
+        };
+    }
 
-// Create a function component on mount to check dom for any email address
-// possibly use a regex formula to see if anything can get picked up
+    componentDidMount() {
+        // window.chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+        //     if (message) {
+        //         this.setState({
+        //             configData: message
+        //         });
+        //     }
+        // });
+        chrome.runtime.onMessage.addListener((msg) => {
+            console.log('got here maybes app side', msg);
+            this.setState({
+                configData: msg
+            })
+            // sendResponse('pong')
+        });
+    }
 
-function App() {
-
-  return (
-    <div className="App">
-<Scrape></Scrape>
-    </div>
-  );
+    render() {
+        return (
+            <div className='testing-container'>
+                Extension Pop Up for Testing
+                {this.state.configData}
+            </div>
+        )
+    }
 }
 
-export default App;
+export default App
