@@ -14,8 +14,8 @@ function getDataFromDOM(selector) {
 function ping() {
     chrome.runtime.sendMessage(getDataFromDOM('body'), response => {
         if (chrome.runtime.lastError) {
-            setTimeout(ping, 1000);
-        } else {
+                    setTimeout(ping, 1000);
+                } else {
             console.log('ready to send dom');
             chrome.runtime.sendMessage({
                 message: getDataFromDOM('body')
